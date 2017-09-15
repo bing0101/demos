@@ -32,7 +32,6 @@ allprojects {
 
 subprojects {
     apply plugin: "java"
-    apply plugin: "org.springframework.boot"
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -44,6 +43,17 @@ subprojects {
         }
     }
 
+    task createDirs {
+        doLast {
+            sourceSets*.java.srcDirs*.each { it.mkdirs() }
+            sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+        }
+    }
+}
+
+configure(subprojects - project(":sharding-jdbc-springboot-mapper")) {
+    apply plugin: "org.springframework.boot"
+
     dependencies {
         compile "org.projectlombok:lombok:1.16.10"
         compile "org.springframework.boot:spring-boot-starter-log4j2"
@@ -52,12 +62,5 @@ subprojects {
     configurations {
         all*.exclude module: "spring-boot-starter-logging"
         all*.exclude module: "slf4j-log4j12"
-    }
-
-    task createDirs {
-        doLast {
-            sourceSets*.java.srcDirs*.each { it.mkdirs() }
-            sourceSets*.resources.srcDirs*.each { it.mkdirs()}
-        }
     }
 }

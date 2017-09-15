@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 设置log4j2 自身的log级别为warn -->
+<Configuration status="warn" strict="true">
+    <Properties>
+        <Property name="layout">%d %p [%X{traceId}] [%t] %c{10}:%M:%L %m%n</Property>
+        <Property name="project.name">sharding-jdbc-springboot-demo</Property>
+        <Property name="logging.file.path">/tmp</Property>
+        <Property name="logging.file.name.debug">${logging.file.path}/${project.name}.log</Property>
+        <Property name="logging.file.name.info">${logging.file.path}/${project.name}.log</Property>
+        <Property name="logging.file.name.warn">${logging.file.path}/${project.name}-warn.log</Property>
+        <Property name="logging.file.name.error">${logging.file.path}/${project.name}-error.log</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layout}"/>
+        </Console>
+
+        <RollingRandomAccessFile name="debugFile"
+                                 fileName="${logging.file.name.debug}"
+                                 filePattern="${logging.file.name.debug}-%d{yyyy-MM-dd}">
+
+            <PatternLayout pattern="${layout}"/>
+            <ThresholdFilter level="debug"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="infoFile"
+                                 fileName="${logging.file.name.info}"
+                                 filePattern="${logging.file.name.info}-%d{yyyy-MM-dd}">
+
+            <PatternLayout pattern="${layout}"/>
+            <ThresholdFilter level="info"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="warnFile"
+                                 fileName="${logging.file.name.warn}"
+                                 filePattern="${logging.file.name.warn}-%d{yyyy-MM-dd}">
+
+            <PatternLayout pattern="${layout}"/>
+            <ThresholdFilter level="warn"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="errorFile"
+                                 fileName="${logging.file.name.error}"
+                                 filePattern="${logging.file.name.error}-%d{yyyy-MM-dd}">
+
+            <PatternLayout pattern="${layout}"/>
+            <ThresholdFilter level="error"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+
+        </RollingRandomAccessFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <Appender-ref ref="Console" />
+            <Appender-ref ref="debugFile" />
+            <Appender-ref ref="infoFile" />
+            <Appender-ref ref="warnFile" />
+            <Appender-ref ref="errorFile" />
+        </Root>
+    </Loggers>
+</Configuration>

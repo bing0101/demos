@@ -1,4 +1,4 @@
-package com.bing.sharding_jdbc.config;
+package com.bing.shardingjdbc.config;
 
 import com.dangdang.ddframe.rdb.sharding.api.ShardingDataSourceFactory;
 import com.dangdang.ddframe.rdb.sharding.api.rule.DataSourceRule;
@@ -26,8 +26,69 @@ public class ShardingRuleConfig {
     private static Logger logger = LoggerFactory.getLogger(ShardingRuleConfig.class);
 
     public static void main(String[] args) {
+        query();
+    }
+
+    private static void insert() {
+        String sql = "insert into t_order (order_id, user_id) values (?, ?)";
+
         DataSource dataSource = getDataSource();
-        String sql = "SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.user_id=? AND o.order_id=?";
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = dataSource.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, 1002);
+            ps.setInt(2, 11);
+
+            int count = ps.executeUpdate();
+            logger.info("count : {}", count);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ps.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void query2() {
+        DataSource dataSource = getDataSource();
+        String sql = "SELECT * FROM t_order WHERE user_id=? ";
+
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            connection = dataSource.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, 10);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getInt(1));
+                System.out.println(rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void query() {
+        DataSource dataSource = getDataSource();
+        String sql = "SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.user_id=? AND i.order_id=? AND o.order_id=?";
 
         Connection connection = null;
         PreparedStatement ps = null;
@@ -37,6 +98,7 @@ public class ShardingRuleConfig {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, 10);
             ps.setInt(2, 1001);
+            ps.setInt(3, 1001);
 
             rs = ps.executeQuery();
 

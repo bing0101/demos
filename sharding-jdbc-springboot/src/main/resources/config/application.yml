@@ -1,0 +1,11 @@
+dbs:
+  - dbname: db0
+    url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_0
+    username: xiaobing
+    password: 8541868
+
+  - dbname: db1
+    url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_1
+    username: xiaobing
+    password: 8541868
+

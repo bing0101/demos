@@ -1,4 +1,4 @@
-package com.bing.sharding_jdbc.config;
+package com.bing.shardingjdbc.config;
 
 import com.dangdang.ddframe.rdb.sharding.api.ShardingValue;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.database.SingleKeyDatabaseShardingAlgorithm;
