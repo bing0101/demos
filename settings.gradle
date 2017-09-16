@@ -1,7 +1,6 @@
 rootProject.name = 'demos'
 include 'sharding-jdbc'
 include 'sharding-jdbc-springboot'
-include 'sharding-jdbc-springboot-yml'
 include 'sharding-jdbc-springboot-spring'
 include 'sharding-jdbc-springboot-mapper'
 
