@@ -23,5 +23,9 @@
                 <rdb:table-rule logic-table="order_item" actual-tables="t_order_item_0, t_order_item_1" database-strategy="databaseStrategy" table-strategy="orderItemTableStrategy" />
             </rdb:table-rules>
         </rdb:sharding-rule>
+        <rdb:props>
+            <prop key="metrics.enable">true</prop>
+            <prop key="sql.show">true</prop>
+        </rdb:props>
     </rdb:data-source>
 </beans>
