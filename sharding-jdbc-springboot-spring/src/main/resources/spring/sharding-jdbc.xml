@@ -17,10 +17,14 @@
     <rdb:strategy id="orderItemTableStrategy" sharding-columns="order_id" algorithm-class="com.bing.shardingjdbc.spring.algorithm.ModuloTableShardingAlgorithm" />
 
     <rdb:data-source id="shardingDataSource">
-        <rdb:sharding-rule data-sources="db0,db1">
+        <rdb:sharding-rule data-sources="db0,db1" key-generator-class="com.dangdang.ddframe.rdb.sharding.keygen.DefaultKeyGenerator">
             <rdb:table-rules>
-                <rdb:table-rule logic-table="order" actual-tables="t_order_${0..1}" database-strategy="databaseStrategy" table-strategy="orderTableStrategy" />
-                <rdb:table-rule logic-table="order_item" actual-tables="t_order_item_0, t_order_item_1" database-strategy="databaseStrategy" table-strategy="orderItemTableStrategy" />
+                <rdb:table-rule logic-table="order" actual-tables="t_order_${0..1}" database-strategy="databaseStrategy" table-strategy="orderTableStrategy">
+                    <rdb:generate-key-column column-name="order_id" />
+                </rdb:table-rule>
+                <rdb:table-rule logic-table="order_item" actual-tables="t_order_item_${0..1}" database-strategy="databaseStrategy" table-strategy="orderItemTableStrategy">
+                    <rdb:generate-key-column column-name="item_id" />
+                </rdb:table-rule>
             </rdb:table-rules>
         </rdb:sharding-rule>
         <rdb:props>

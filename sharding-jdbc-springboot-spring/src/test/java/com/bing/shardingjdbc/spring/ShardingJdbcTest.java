@@ -1,8 +1,10 @@
 package com.bing.shardingjdbc.spring;
 
 import com.alibaba.fastjson.JSON;
+import com.bing.shardingjdbc.springboot.mapper.OrderItemMapper;
 import com.bing.shardingjdbc.springboot.mapper.OrderMapper;
 import com.bing.shardingjdbc.springboot.model.Order;
+import com.bing.shardingjdbc.springboot.model.OrderItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,18 +21,30 @@ public class ShardingJdbcTest {
     @Resource
     private OrderMapper orderMapper;
 
+    @Resource
+    private OrderItemMapper orderItemMapper;
+
     @Test
     public void insert() {
         Order record = new Order();
-        record.setOrderId(100);
+//        record.setOrderId(200);
         record.setUserId(10);
 
-        orderMapper.insert(record);
+        orderMapper.insertSelective(record);
     }
 
     @Test
     public void select() {
         Order record = orderMapper.selectByPrimaryKey(1001);
         System.out.println(JSON.toJSONString(record));
+    }
+
+    @Test
+    public void itemInsert() {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrderId(100);
+        orderItem.setUserId(10);
+
+        orderItemMapper.insertSelective(orderItem);
     }
 }
