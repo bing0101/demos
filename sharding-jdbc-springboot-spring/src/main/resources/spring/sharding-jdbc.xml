@@ -12,12 +12,15 @@
     <!-- 忽略spring不能识别的占位符，sharding-jdbc将会识别替换这些占位符 -->
     <context:property-placeholder ignore-unresolvable="true"/>
 
+    <rdb:master-slave-data-source id="db_cluster0" master-data-source-ref="db0" slave-data-sources-ref="db0_slave1, db0_slave0" />
+    <rdb:master-slave-data-source id="db_cluster1" master-data-source-ref="db1" slave-data-sources-ref="db1_slave0, db1_slave1" />
+
     <rdb:strategy id="databaseStrategy" sharding-columns="user_id" algorithm-class="com.bing.shardingjdbc.spring.algorithm.ModuloDatabaseShardingAlgorithm" />
     <rdb:strategy id="orderTableStrategy" sharding-columns="order_id" algorithm-expression="t_order_${order_id.longValue() % 2}" />
     <rdb:strategy id="orderItemTableStrategy" sharding-columns="order_id" algorithm-class="com.bing.shardingjdbc.spring.algorithm.ModuloTableShardingAlgorithm" />
 
     <rdb:data-source id="shardingDataSource">
-        <rdb:sharding-rule data-sources="db0,db1" key-generator-class="com.dangdang.ddframe.rdb.sharding.keygen.DefaultKeyGenerator">
+        <rdb:sharding-rule data-sources="db_cluster0, db_cluster1" key-generator-class="com.dangdang.ddframe.rdb.sharding.keygen.DefaultKeyGenerator">
             <rdb:table-rules>
                 <rdb:table-rule logic-table="order" actual-tables="t_order_${0..1}" database-strategy="databaseStrategy" table-strategy="orderTableStrategy">
                     <rdb:generate-key-column column-name="order_id" />

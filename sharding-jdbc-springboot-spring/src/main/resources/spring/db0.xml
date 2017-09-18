@@ -11,4 +11,17 @@
         <property name="password" value="${db0.password}" />
     </bean>
 
+    <bean id="db0_slave0" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db0_slave0.driver}" />
+        <property name="url" value="${db0_slave0.url}" />
+        <property name="username" value="${db0_slave0.username}" />
+        <property name="password" value="${db0_slave0.password}" />
+    </bean>
+
+    <bean id="db0_slave1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db0_slave1.driver}" />
+        <property name="url" value="${db0_slave1.url}" />
+        <property name="username" value="${db0_slave1.username}" />
+        <property name="password" value="${db0_slave1.password}" />
+    </bean>
 </beans>

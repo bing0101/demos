@@ -5,6 +5,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-jdbc"
     compile "com.dangdang:sharding-jdbc-core:1.5.3"
     compile "com.dangdang:sharding-jdbc-config-spring:1.5.3"
+    compile "com.dangdang:sharding-jdbc-transaction:1.5.3"
     compile "mysql:mysql-connector-java:5.1.44"
     compile "commons-dbcp:commons-dbcp:1.4"
     compile "org.mybatis:mybatis:3.4.2"

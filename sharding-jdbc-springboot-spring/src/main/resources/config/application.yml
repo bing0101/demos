@@ -3,9 +3,29 @@ db0:
   url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_0
   username: xiaobing
   password: 8541868
+db0_slave0:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_0_slave_0
+  username: xiaobing
+  password: 8541868
+db0_slave1:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_0_slave_1
+  username: xiaobing
+  password: 8541868
+
 db1:
   driver: com.mysql.jdbc.Driver
   url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_1
   username: xiaobing
   password: 8541868
-
+db1_slave0:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_1_slave_0
+  username: xiaobing
+  password: 8541868
+db1_slave1:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_1_slave_1
+  username: xiaobing
+  password: 8541868
