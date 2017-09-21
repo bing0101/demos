@@ -3,6 +3,7 @@ dependencies {
     
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework.boot:spring-boot-starter-jdbc"
+    compile "org.springframework.boot:spring-boot-starter-aop"
     compile "com.dangdang:sharding-jdbc-core:1.5.3"
     compile "com.dangdang:sharding-jdbc-config-spring:1.5.3"
     compile "com.dangdang:sharding-jdbc-transaction:1.5.3"

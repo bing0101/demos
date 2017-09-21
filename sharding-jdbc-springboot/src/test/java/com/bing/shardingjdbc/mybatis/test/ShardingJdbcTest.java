@@ -23,7 +23,7 @@ public class ShardingJdbcTest {
     @Test
     public void insert() {
         Order record = new Order();
-        record.setOrderId(100);
+        record.setOrderId(100L);
         record.setUserId(10);
 
         orderMapper.insert(record);
@@ -31,7 +31,7 @@ public class ShardingJdbcTest {
 
     @Test
     public void select() {
-        Order record = orderMapper.selectByPrimaryKey(1001);
+        Order record = orderMapper.selectByPrimaryKey(1001L);
         System.out.println(JSON.toJSONString(record));
     }
 }

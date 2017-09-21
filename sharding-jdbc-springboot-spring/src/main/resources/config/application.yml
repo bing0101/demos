@@ -29,3 +29,9 @@ db1_slave1:
   url: jdbc:mysql://120.25.73.72:3306/sharding_jdbc_1_slave_1
   username: xiaobing
   password: 8541868
+
+tx_log:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://120.25.73.72:3306/tx_log
+  username: xiaobing
+  password: 8541868
