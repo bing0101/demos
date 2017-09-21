@@ -83,7 +83,7 @@ public class ShardingRuleConfig {
         }
     }
 
-    private static SoftTransactionConfiguration getTxConfiguration(final DataSource dataSource,boolean useMemoryStorage, boolean useNestedJob) {
+    private static SoftTransactionConfiguration getTxConfiguration(final DataSource dataSource, boolean useMemoryStorage, boolean useNestedJob) {
         SoftTransactionConfiguration txConfig = new SoftTransactionConfiguration(dataSource);
         txConfig.setSyncMaxDeliveryTryTimes(5);//设置同步事务送达的最大尝试次数
         if (useMemoryStorage) {//使用内存存储事务日志
