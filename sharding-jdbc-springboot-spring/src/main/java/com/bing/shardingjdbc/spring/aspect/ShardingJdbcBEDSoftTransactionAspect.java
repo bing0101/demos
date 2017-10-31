@@ -28,7 +28,7 @@ public class ShardingJdbcBEDSoftTransactionAspect {
 
     @Around("bedSoftTxPointcut()")
     public void around(ProceedingJoinPoint pjp) {
-        bedSoftTransaction.begin();//todo 开启事务需要传递connection
+//        bedSoftTransaction.begin();//todo 开启事务需要传递connection
         try {
             pjp.proceed();
         } catch (Throwable throwable) {
