@@ -1,0 +1,5 @@
+dependencies {
+    compile "com.101tec:zkclient:0.10"
+    compile "org.apache.curator:curator-framework:2.10.0"
+    compile "org.apache.curator:curator-recipes:2.10.0"
+}

@@ -35,7 +35,8 @@ public class CuratorTest {
 
     @Before
     public void init() {
-        String serverstring = "101.132.104.145:2181,101.132.104.145:2182,101.132.104.145:2183";
+//        String serverstring = "101.132.104.145:2181,101.132.104.145:2182,101.132.104.145:2183";
+        String serverstring = "localhost:2181";
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
 //        client = CuratorFrameworkFactory.newClient(serverstring, retryPolicy);
         client = CuratorFrameworkFactory.builder()
@@ -60,8 +61,8 @@ public class CuratorTest {
 
     @Test
     public void getData() throws Exception {
-        client.setData().forPath("/test1", "test".getBytes());
-        byte[] ret = client.getData().forPath("/test1");
+        client.setData().forPath("/test", "test".getBytes());
+        byte[] ret = client.getData().forPath("/test");
         System.out.println(new String(ret));
     }
 

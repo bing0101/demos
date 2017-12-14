@@ -5,4 +5,5 @@ include 'sharding-jdbc-springboot-spring'
 include 'sharding-jdbc-springboot-mapper'
 include 'snowflake'
 include 'zk'
+include 'designPatterns'
 
