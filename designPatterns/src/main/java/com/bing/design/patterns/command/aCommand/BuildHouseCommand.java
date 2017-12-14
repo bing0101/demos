@@ -1,4 +1,4 @@
-package com.bing.design.patterns.command;
+package com.bing.design.patterns.command.aCommand;
 
 /**
  * Created by bing on 2017/12/14.
@@ -11,6 +11,6 @@ public class BuildHouseCommand implements Command {
     }
 
     public void execute() {
-        worker.work();
+        worker.build();
     }
 }

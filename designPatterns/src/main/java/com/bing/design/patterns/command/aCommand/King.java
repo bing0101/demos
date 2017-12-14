@@ -1,4 +1,4 @@
-package com.bing.design.patterns.command;
+package com.bing.design.patterns.command.aCommand;
 
 /**
  * Created by bing on 2017/12/14.
@@ -19,7 +19,7 @@ public class King {
         //4. 建房子的大臣，国王把命令给大臣
         Minister minister = new Minister(buildHouseCommand);
 
-        //5. 大臣执行命令，其实是由公司实际操作
-        minister.build();
+        //5. 大臣行动起来，其实是由工人实际操作
+        minister.action();
     }
 }
