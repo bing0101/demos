@@ -1,0 +1,4 @@
+db:
+  url: jdbc:mysql://120.25.73.72:3306/shiro
+  username: xiaobing
+  password: 8541868

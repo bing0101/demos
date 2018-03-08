@@ -6,4 +6,6 @@ include 'sharding-jdbc-springboot-mapper'
 include 'snowflake'
 include 'zk'
 include 'designPatterns'
+include 'shiro'
+include 'shiro-mapper'
 
