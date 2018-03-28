@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by bing on 2018/2/28.
  */
 @Data
-public class AuthorizationCodeReq {
+public class AuthorizeReq {
     /**
      * 授权类型
      */

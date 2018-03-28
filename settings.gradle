@@ -8,4 +8,7 @@ include 'zk'
 include 'designPatterns'
 include 'shiro'
 include 'shiro-mapper'
+include 'security'
+include 'oauth2'
+include 'spring-cloud-oauth2'
 

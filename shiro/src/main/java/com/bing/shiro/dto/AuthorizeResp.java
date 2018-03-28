@@ -6,15 +6,11 @@ import lombok.Data;
  * Created by bing on 2018/2/28.
  */
 @Data
-public class AuthorizationCodeResp extends BaseResp {
-    /**
-     * 重定向URI
-     */
-    private String redirectUri;
+public class AuthorizeResp extends BaseResp {
     /**
      * 授权码
      */
-    private String authorizationCode;
+    private String code;
     /**
      * 客户端状态
      */

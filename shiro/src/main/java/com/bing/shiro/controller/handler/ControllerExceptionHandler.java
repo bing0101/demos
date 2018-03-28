@@ -1,4 +1,4 @@
-package com.bing.shiro.handler;
+package com.bing.shiro.controller.handler;
 
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
