@@ -11,4 +11,6 @@ include 'shiro-mapper'
 include 'security'
 include 'oauth2'
 include 'spring-cloud-oauth2'
+include 'java-spi'
+include 'retrofit'
 
